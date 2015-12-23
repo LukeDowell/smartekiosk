@@ -1,0 +1,27 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+jar {
+    baseName = 'smartcarte-kiosk'
+    version =  '1.0.0-SNAPSHOT'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile('org.slf4j:slf4j-api:1.7.13')
+    compile('org.slf4j:slf4j-simple:1.7.13')
+    testCompile("junit:junit:4.12")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
+}
