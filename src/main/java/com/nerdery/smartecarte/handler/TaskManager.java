@@ -18,7 +18,9 @@ public class TaskManager implements Observer {
     private static final Logger logger = LoggerFactory.getLogger(TaskManager.class);
 
     public TaskManager() {
-        Multiplexer.getInstance().addObserver(this);
+        Multiplexer mux = Multiplexer.getInstance();
+        mux.addObserver(this);
+        System.out.println(mux);
         logger.debug("TaskManager started.");
     }
 
@@ -31,6 +33,7 @@ public class TaskManager implements Observer {
 
             logger.debug("taskmanager - update - packet received: {}", command);
             new DcbHandlerTask(command, data).call();
+
         } catch (Exception e) {
             e.printStackTrace();
         }

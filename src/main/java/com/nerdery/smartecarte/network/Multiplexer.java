@@ -45,7 +45,7 @@ public class Multiplexer extends Observable implements Transmitter {
         SocketAddress source = channel.receive(buffer);
 
         // Pull the data out of the buffer
-        byte[] data = buffer.array();
+        byte[] data = Arrays.copyOf(buffer.array(), buffer.position());
 
         logger.debug("read - message received: {} content: {}", source, data);
 
@@ -158,13 +158,25 @@ public class Multiplexer extends Observable implements Transmitter {
         outgoingQueue.add(new Transmit(dest, data));
     }
 
-    private static Multiplexer instance;
+    /**
+     * I don't really know what I'm doing here but I keep getting different instances of the mux
+     * http://stackoverflow.com/questions/11165852/java-singleton-and-synchronization
+     */
+    private static volatile Multiplexer instance;
+    private static final Object lock = new Object();
 
     public static Multiplexer getInstance() {
-        if(instance == null) {
-            instance = new Multiplexer();
+        Multiplexer r = instance;
+        if(r == null) {
+            synchronized (lock) {
+                r = instance;
+                if(r == null) {
+                    r = new Multiplexer();
+                    instance = r;
+                }
+            }
         }
-        return instance;
+        return r;
     }
 
     private Multiplexer() {}

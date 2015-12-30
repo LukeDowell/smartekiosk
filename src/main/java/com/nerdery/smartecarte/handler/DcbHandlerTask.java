@@ -2,6 +2,7 @@ package com.nerdery.smartecarte.handler;
 
 import com.nerdery.smartecarte.dcb.DcbCommand;
 import com.nerdery.smartecarte.dcb.DcbCommandPacket;
+import com.nerdery.smartecarte.handler.tasks.COMMAND_GET_ALL_DEVICE_STATE;
 import com.nerdery.smartecarte.handler.tasks.COMMAND_GET_DCB_INFO;
 import com.nerdery.smartecarte.handler.tasks.COMMAND_GET_IP_MAC_ADDRESS;
 import org.slf4j.Logger;
@@ -24,6 +25,7 @@ public class DcbHandlerTask implements Callable<Void> {
     private static Map<DcbCommand, DcbHandler> dcbHandlerMap = new HashMap<>();
 
     static {
+        dcbHandlerMap.put(DcbCommand.COMMAND_GET_ALL_DEVICE_STATE, new COMMAND_GET_ALL_DEVICE_STATE());
         dcbHandlerMap.put(DcbCommand.COMMAND_GET_DCB_INFO, new COMMAND_GET_DCB_INFO());
         dcbHandlerMap.put(DcbCommand.COMMAND_GET_IP_MAC_ADDRESS, new COMMAND_GET_IP_MAC_ADDRESS());
         logger.debug("DcbHandlerTasks initialized");

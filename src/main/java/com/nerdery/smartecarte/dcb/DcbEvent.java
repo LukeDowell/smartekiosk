@@ -13,5 +13,7 @@ public enum DcbEvent {
 
     DCB_ADDED,
 
+    DCB_UPDATED,
+
     DEVICE_ADDED
 }

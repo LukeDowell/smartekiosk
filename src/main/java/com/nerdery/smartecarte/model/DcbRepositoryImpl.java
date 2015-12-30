@@ -4,6 +4,8 @@ import com.nerdery.smartecarte.dcb.Dcb;
 import com.nerdery.smartecarte.dcb.DcbDevice;
 import com.nerdery.smartecarte.dcb.DcbEvent;
 import com.nerdery.smartecarte.model.event.DcbChangedEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -13,9 +15,11 @@ import java.util.stream.Collectors;
  */
 public class DcbRepositoryImpl extends DcbRepository {
 
+    private static final Logger logger = LoggerFactory.getLogger(DcbRepository.class);
+
     private Map<Integer, Dcb> dcbs;
 
-    public DcbRepositoryImpl() {
+    private DcbRepositoryImpl() {
         dcbs = new HashMap<>();
     }
 
@@ -27,15 +31,34 @@ public class DcbRepositoryImpl extends DcbRepository {
     @Override
     public void addDcb(Dcb dcb) {
         dcbs.put(dcb.getColumnNumber(), dcb);
+        logger.debug("DcbRepository - dcb added: {}", dcb.getColumnNumber());
+
         setChanged();
         notifyObservers(new DcbChangedEvent(DcbEvent.DCB_ADDED, dcb.getColumnNumber(), 0));
+
     }
 
     @Override
     public void addDevice(int columnNumber, DcbDevice device) {
-        dcbs.get(columnNumber).addDevioe(device);
+        dcbs.get(columnNumber).addDevice(device);
+        logger.debug("DcbRepository - device added: {} {}", columnNumber, device.getId());
+
         setChanged();
         notifyObservers(new DcbChangedEvent(DcbEvent.DEVICE_ADDED, columnNumber, device.getId()));
+    }
+
+    @Override
+    public void updateDcb(Dcb dcb) {
+        Dcb currentDcb = getDcb(dcb.getColumnNumber());
+        if(currentDcb != null) {
+
+            dcbs.put(dcb.getColumnNumber(), dcb);
+            setChanged();
+            notifyObservers(new DcbChangedEvent(DcbEvent.DCB_UPDATED, dcb.getColumnNumber(), 0));
+
+        } else {
+            addDcb(dcb);
+        }
     }
 
     @Override
@@ -67,29 +90,50 @@ public class DcbRepositoryImpl extends DcbRepository {
     }
 
     @Override
-    DcbDevice updateDevice(int columnNumber, int id, DcbDevice.State state) {
+    public void updateDevice(int columnNumber, int id, DcbDevice.State state) {
         Dcb dcb = getDcb(columnNumber);
         if(dcb != null) {
-            DcbDevice.State previousState = dcb.getDevice(id).getState();
-            dcb.getDevice(id).setState(state);
-            if(!previousState.equals(state)) {
-                setChanged();
-                notifyObservers(new DcbChangedEvent(DcbEvent.DEVICE_STATE_CHANGED, columnNumber, id));
-            }
-            return dcb.getDevice(id);
+            DcbDevice device = new DcbDevice(id);
+            device.setState(state);
+            updateDevice(columnNumber, device);
         }
-
-        return null;
     }
 
-    private DcbRepository instance;
+    @Override
+    public void updateDevice(int columnNumber, DcbDevice device) {
+        // Grab the dcb
+        Dcb dcb = getDcb(columnNumber);
 
-    public DcbRepository getInstance() {
-        synchronized (this) {
-            if(instance == null) {
-                instance = new DcbRepositoryImpl();
+        // If the dcb is not null
+        if(dcb != null) {
+
+            // Grab the existing device with the same id as the parameter device
+            DcbDevice currentDevice = dcb.getDevice(device.getId());
+
+            // If it is null, then add it and be done
+            if(currentDevice == null) {
+                addDevice(columnNumber, device);
+
+            } else {
+                // Otherwise, compare states and update
+                DcbDevice.State state = device.getState();
+                DcbDevice.State previousState = currentDevice.getState();
+                currentDevice.setState(state);
+
+                if(!state.equals(previousState)) {
+                    setChanged();
+                    notifyObservers(new DcbChangedEvent(DcbEvent.DEVICE_STATE_CHANGED, columnNumber, device.getId()));
+                }
             }
-            return instance;
         }
+    }
+
+    private static DcbRepository instance;
+
+    public static DcbRepository getInstance() {
+        if(instance == null) {
+            instance = new DcbRepositoryImpl();
+        }
+        return instance;
     }
 }

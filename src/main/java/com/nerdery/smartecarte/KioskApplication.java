@@ -34,9 +34,12 @@ public class KioskApplication extends Application {
         Parent welcomeRoot = loader.load(getClass().getResource("/fxml/welcome.fxml"));
         Parent cartSelectionRoot = loader.load(getClass().getResource("/fxml/cartselection.fxml"));
 
-        KioskApplication.cartSelectionScene = new Scene(cartSelectionRoot, 600, 450);
+        cartSelectionScene = new Scene(cartSelectionRoot, 600, 450);
+        cartSelectionScene.getStylesheets().add("/styles/device.css");
+
         primaryStage.setScene(new Scene(welcomeRoot, 600, 450));
         primaryStage.show();
+
 
         // Spin up packet handlers
         executorService.execute(TaskManager::new);
@@ -46,13 +49,17 @@ public class KioskApplication extends Application {
 
         // Spin up mux
         Multiplexer multiplexer = Multiplexer.getInstance();
+        System.out.println(" Kiosk - " + multiplexer);
         executorService.execute(() -> {
             try {
+                Thread.sleep(1000);
                 multiplexer.multiplex("localhost", 30001);
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         });
+
+
     }
 
     public static void main(String[] args) {

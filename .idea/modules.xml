@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/smartekiosk.iml" filepath="$PROJECT_DIR$/smartekiosk.iml" />
+      <module fileurl="file://$PROJECT_DIR$/smartecarte-kiosk.iml" filepath="$PROJECT_DIR$/smartecarte-kiosk.iml" />
     </modules>
   </component>
 </project>

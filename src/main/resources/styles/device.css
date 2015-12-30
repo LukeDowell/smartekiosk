@@ -1,0 +1,7 @@
+.device-enabled {
+    -fx-background-color: green;
+}
+
+.device-disabled {
+    -fx-background-color: red;
+}

@@ -12,19 +12,23 @@ import java.util.Observable;
  */
 public abstract class DcbRepository extends Observable {
 
-    abstract void initialize();
+    public abstract void initialize();
 
-    abstract void addDcb(Dcb dcb);
+    public abstract void addDcb(Dcb dcb);
 
-    abstract void addDevice(int columnNumber, DcbDevice device);
+    public abstract void addDevice(int columnNumber, DcbDevice device);
 
-    abstract Collection<Dcb> getAllDcbs();
+    public abstract void updateDcb(Dcb dcb);
 
-    abstract Collection<DcbDevice> getAllDevices();
+    public abstract Collection<Dcb> getAllDcbs();
 
-    abstract Dcb getDcb(int columnNumber);
+    public abstract Collection<DcbDevice> getAllDevices();
 
-    abstract DcbDevice getDevice(int columnNumber, int id);
+    public abstract Dcb getDcb(int columnNumber);
 
-    abstract DcbDevice updateDevice(int columnNumber, int id, DcbDevice.State state);
+    public abstract DcbDevice getDevice(int columnNumber, int id);
+
+    public abstract void updateDevice(int columnNumber, int id, DcbDevice.State state);
+
+    public abstract void updateDevice(int columnNumber, DcbDevice device);
 }
