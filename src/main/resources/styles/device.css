@@ -5,3 +5,8 @@
 .device-disabled {
     -fx-background-color: red;
 }
+
+.device-selected {
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+}

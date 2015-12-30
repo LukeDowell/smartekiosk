@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
@@ -66,6 +67,13 @@ public class UIController implements Observer, Initializable{
         logger.debug("UIController initialized");
     }
 
+    private void cartClicked(MouseEvent event) {
+        Node sourceNode = (Node) event.getSource();
+        sourceNode.getStyleClass().add("device-selected");
+        String id = ((Label) sourceNode.lookup("#idLabel")).getText();
+        logger.debug("UIController - Node clicked with id: " + id);
+    }
+
     private void updateCarts() {
         try {
             Collection<DcbDevice> devices = DcbRepositoryImpl.getInstance().getAllDevices();
@@ -81,6 +89,7 @@ public class UIController implements Observer, Initializable{
                     deviceNode.getStyleClass().add("device-disabled");
                 }
 
+                deviceNode.setOnMouseClicked(this::cartClicked);
                 children.add(deviceNode);
             }
 

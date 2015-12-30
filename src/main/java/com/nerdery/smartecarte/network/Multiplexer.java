@@ -159,24 +159,23 @@ public class Multiplexer extends Observable implements Transmitter {
     }
 
     /**
-     * I don't really know what I'm doing here but I keep getting different instances of the mux
      * http://stackoverflow.com/questions/11165852/java-singleton-and-synchronization
      */
     private static volatile Multiplexer instance;
     private static final Object lock = new Object();
 
     public static Multiplexer getInstance() {
-        Multiplexer r = instance;
-        if(r == null) {
+        Multiplexer result = instance;
+        if(result == null) {
             synchronized (lock) {
-                r = instance;
-                if(r == null) {
-                    r = new Multiplexer();
-                    instance = r;
+                result = instance;
+                if(result == null) {
+                    result = new Multiplexer();
+                    instance = result;
                 }
             }
         }
-        return r;
+        return result;
     }
 
     private Multiplexer() {}
