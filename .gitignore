@@ -1,1 +1,6 @@
 /build/
+out/
+*.iml
+out/
+.idea/
+.DS_STORE
