@@ -1,6 +1,7 @@
 package com.nerdery.smartecarte.network;
 
 
+import com.nerdery.smartecarte.dcb.DcbCommandPacket;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -156,5 +157,16 @@ public class Multiplexer extends Observable implements Transmitter {
     public void transmit(SocketAddress dest, byte[] data) {
         outgoingQueue.add(new Transmit(dest, data));
     }
+
+    private static Multiplexer instance;
+
+    public static Multiplexer getInstance() {
+        if(instance == null) {
+            instance = new Multiplexer();
+        }
+        return instance;
+    }
+
+    private Multiplexer() {}
 
 }

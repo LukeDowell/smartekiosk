@@ -73,6 +73,12 @@ public class DcbCommandPacket {
 				+ ", check=" + check + ", buffer=" + buffer  + "]";
 	}
 
+	/**
+	 *
+	 * @param buffer
+	 * 		The byte array to parse
+	 * @return
+	 */
 	public static DcbCommandPacket parse(byte[] buffer) {
 		int length = buffer[0];
 		DcbCommand command = DcbCommand.valueOf(buffer[1]);

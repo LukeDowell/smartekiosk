@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public enum DcbCommand {
-	COMMAND_GET_DEVICE_STATE(Code.COMMAND_GET_DEVICE_STATE, false),
+	COMMAND_GET_ALL_DEVICE_STATE(Code.COMMAND_GET_ALL_DEVICE_STATE, false),
 	COMMAND_SET_DEVICE_STATE(Code.COMMAND_SET_DEVICE_STATE, false),
 	
 	COMMAND_GET_IP_MAC_ADDRESS(Code.COMMAND_CODE_GET_IP_MAC_ADDRESS, true),
@@ -15,7 +15,7 @@ public enum DcbCommand {
 	COMMAND_GET_DCB_INFO(Code.COMMAND_GET_DCB_INFO, false);
 	
 	static private class Code {
-		static public final Byte COMMAND_GET_DEVICE_STATE	= 0x01;
+		static public final Byte COMMAND_GET_ALL_DEVICE_STATE	= 0x01;
 		static public final Byte COMMAND_SET_DEVICE_STATE	= 0x02;
 
 		/*
@@ -59,7 +59,7 @@ public enum DcbCommand {
 	static private Map<Byte, DcbCommand> map = new HashMap<Byte, DcbCommand>();
 	
 	static {
-		map.put(Code.COMMAND_GET_DEVICE_STATE, COMMAND_GET_DEVICE_STATE);
+		map.put(Code.COMMAND_GET_ALL_DEVICE_STATE, COMMAND_GET_ALL_DEVICE_STATE);
 		map.put(Code.COMMAND_SET_DEVICE_STATE, COMMAND_SET_DEVICE_STATE);
 		map.put(Code.COMMAND_CODE_GET_IP_MAC_ADDRESS, COMMAND_GET_IP_MAC_ADDRESS);
 		map.put(Code.COMMAND_GET_DCB_PARAMETERS, COMMAND_GET_DCB_PARAMETERS);

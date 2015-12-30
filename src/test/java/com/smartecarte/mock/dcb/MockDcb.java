@@ -9,6 +9,7 @@
 
         import com.nerdery.smartecarte.dcb.Dcb;
         import com.nerdery.smartecarte.dcb.DcbCommandPacket;
+        import com.nerdery.smartecarte.dcb.DcbDevice;
         import com.nerdery.smartecarte.network.Multiplexer;
         import com.nerdery.smartecarte.network.Transmit;
         import org.slf4j.Logger;
@@ -46,13 +47,23 @@ public class MockDcb extends Dcb {
         setFirmwareVersion("001");
 
         setColumnNumber(1);
+
+        for(int i = 1; i <= 20; i++) {
+            DcbDevice device = new DcbDevice(i);
+            if(Math.random() > .50) {
+                device.setState(DcbDevice.State.OFF);
+            } else {
+                device.setState(DcbDevice.State.ON);
+            }
+            addDevice(device);
+        }
     }
 
     public void start() throws IOException {
         logger.info("starting mock dcb");
         logger.debug("dcb: {}", this);
 
-        Multiplexer multiplexor = new Multiplexer();
+        Multiplexer multiplexor = Multiplexer.getInstance();
 
         multiplexor.addObserver((server, transmit) -> {
             Transmit transmission = (Transmit) transmit;

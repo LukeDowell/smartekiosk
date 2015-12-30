@@ -1,6 +1,7 @@
 package com.nerdery.smartecarte.dcb;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Dcb {
@@ -18,6 +19,7 @@ public class Dcb {
 	private List<DcbDevice> devices;
 	
 	public Dcb() {
+		devices = new LinkedList<>();
 	}
 
 	public byte[] getMacAddress() {
@@ -94,6 +96,19 @@ public class Dcb {
 
 	public List<DcbDevice> getDevices() {
 		return devices;
+	}
+
+	public DcbDevice getDevice(int id) {
+		for(DcbDevice d : devices) {
+			if(d.getId() == id) {
+				return d;
+			}
+		}
+		return null;
+	}
+
+	public void addDevice(DcbDevice device) {
+		devices.add(device);
 	}
 
 	public void setDevices(List<DcbDevice> devices) {

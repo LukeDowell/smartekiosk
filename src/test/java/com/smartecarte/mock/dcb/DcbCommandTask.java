@@ -8,7 +8,8 @@ import java.net.SocketAddress;
 
         import com.nerdery.smartecarte.dcb.DcbCommand;
         import com.nerdery.smartecarte.dcb.DcbCommandPacket;
-        import com.nerdery.smartecarte.dcb.DcbResponsePacket;
+import com.nerdery.smartecarte.dcb.DcbDevice;
+import com.nerdery.smartecarte.dcb.DcbResponsePacket;
 import com.nerdery.smartecarte.network.Transmitter;
 import org.slf4j.Logger;
         import org.slf4j.LoggerFactory;
@@ -19,8 +20,35 @@ public class DcbCommandTask implements Callable<Void> {
 
     @FunctionalInterface
     public interface DcbCommandHandler {
-        public DcbResponsePacket handler(MockDcb dcb, DcbCommandPacket packet);
+        DcbResponsePacket handler(MockDcb dcb, DcbCommandPacket packet);
     }
+
+    static private final DcbCommandHandler COMMAND_GET_ALL_DEVICE_STATE = (MockDcb dcb, DcbCommandPacket packet) -> {
+        byte[] buffer = packet.getBuffer();
+        byte commandByte = buffer[1];
+        byte columnNumber = buffer[2];
+
+        int numDevices = dcb.getDevices().size(); // 20
+
+        ByteBuffer responseBuffer = ByteBuffer.allocate(2 + numDevices); // command byte, column number, 20 devices
+        responseBuffer.put(commandByte);
+        responseBuffer.put(columnNumber);
+        for(DcbDevice device : dcb.getDevices()) {
+            if(device.getState().equals(DcbDevice.State.OFF)) {
+                responseBuffer.put((byte) 0x00);
+            } else {
+                responseBuffer.put((byte) 0x01);
+            }
+        }
+
+        DcbResponsePacket response = new DcbResponsePacket(DcbCommand.COMMAND_GET_ALL_DEVICE_STATE, responseBuffer.array());
+        logger.debug("COMMAND_GET_ALL_DEVICE_STATE - return response: {}", response);
+        return response;
+    };
+
+    static private final DcbCommandHandler COMMAND_SET_DEVICE_STATE = (MockDcb dcb, DcbCommandPacket packet) -> {
+        return null;
+    };
 
     static private final DcbCommandHandler COMMAND_GET_IP_MAC_ADDRESS = (MockDcb dcb, DcbCommandPacket packet) -> {
         logger.debug("COMMAND_GET_IP_MAC_ADDRESS - dcb: {}  packet: {}", dcb, packet);
@@ -101,6 +129,7 @@ public class DcbCommandTask implements Callable<Void> {
     static private final Map<DcbCommand, DcbCommandHandler> map = new HashMap<DcbCommand, DcbCommandHandler>();
 
     static {
+        map.put(DcbCommand.COMMAND_GET_ALL_DEVICE_STATE, COMMAND_GET_ALL_DEVICE_STATE);
         map.put(DcbCommand.COMMAND_GET_IP_MAC_ADDRESS, COMMAND_GET_IP_MAC_ADDRESS);
         map.put(DcbCommand.COMMAND_GET_DCB_PARAMETERS, COMMAND_GET_DCB_PARAMETERS);
         map.put(DcbCommand.COMMAND_GET_DCB_COLUMN_NUMBER, COMMAND_GET_DCB_COLUMN_NUMBER);
