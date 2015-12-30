@@ -2,58 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f712d43-648f-4c54-b35a-1d20c909a0bb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/styles/device.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/2.9/taskArtifacts/cache.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/2.9/taskArtifacts/cache.properties.lock" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/2.9/taskArtifacts/fileHashes.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/2.9/taskArtifacts/fileSnapshots.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/2.9/taskArtifacts/outputFileStates.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.gradle/2.9/taskArtifacts/taskArtifacts.bin" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/kiosk/com/nerdery/smartecarte/KioskApplication.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/kiosk/com/nerdery/smartecarte/cartselection.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/kiosk/com/nerdery/smartecarte/dcb/Dcb.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/kiosk/com/nerdery/smartecarte/dcb/DcbCommand$Code.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/kiosk/com/nerdery/smartecarte/dcb/DcbCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/kiosk/com/nerdery/smartecarte/dcb/DcbCommandPacket.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/kiosk/com/nerdery/smartecarte/dcb/DcbDevice$State.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/kiosk/com/nerdery/smartecarte/dcb/DcbDevice.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/kiosk/com/nerdery/smartecarte/dcb/DcbEventHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/kiosk/com/nerdery/smartecarte/dcb/DcbPacket.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/kiosk/com/nerdery/smartecarte/dcb/DcbResponsePacket.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/kiosk/com/nerdery/smartecarte/gui/WelcomeController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/kiosk/com/nerdery/smartecarte/network/Multiplexer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/kiosk/com/nerdery/smartecarte/network/Transmit.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/kiosk/com/nerdery/smartecarte/welcome.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/smartekiosk/com/nerdery/smartecarte/KioskApplication.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/smartekiosk/com/nerdery/smartecarte/dcb/Dcb.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/smartekiosk/com/nerdery/smartecarte/dcb/DcbCommand$Code.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/smartekiosk/com/nerdery/smartecarte/dcb/DcbCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/smartekiosk/com/nerdery/smartecarte/dcb/DcbCommandPacket.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/smartekiosk/com/nerdery/smartecarte/dcb/DcbDevice$State.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/smartekiosk/com/nerdery/smartecarte/dcb/DcbDevice.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/smartekiosk/com/nerdery/smartecarte/dcb/DcbEventHandler.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/smartekiosk/com/nerdery/smartecarte/dcb/DcbPacket.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/smartekiosk/com/nerdery/smartecarte/dcb/DcbResponsePacket.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/smartekiosk/com/nerdery/smartecarte/gui/CartSelectionController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/smartekiosk/com/nerdery/smartecarte/gui/WelcomeController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/smartekiosk/com/nerdery/smartecarte/network/Multiplexer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/smartekiosk/com/nerdery/smartecarte/network/Transmit.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/smartekiosk.iml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/KioskApplication.java" afterPath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/KioskApplication.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/controller/UIController.java" afterPath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/controller/UIController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/dcb/DcbEvent.java" afterPath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/dcb/DcbEvent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/handler/DcbHandlerTask.java" afterPath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/handler/DcbHandlerTask.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/handler/TaskManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/handler/TaskManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/handler/tasks/COMMAND_GET_DCB_INFO.java" afterPath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/handler/tasks/COMMAND_GET_DCB_INFO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/model/DcbRepository.java" afterPath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/model/DcbRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/model/DcbRepositoryImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/model/DcbRepositoryImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/network/Multiplexer.java" afterPath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/network/Multiplexer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/service/PollingService.java" afterPath="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/service/PollingService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/fxml/cartselection.fxml" afterPath="$PROJECT_DIR$/src/main/resources/fxml/cartselection.fxml" />
     </list>
     <ignored path="smartecarte-kiosk.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -146,21 +95,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UIController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UIController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/controller/UIController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="81" column="37" selection-start-line="81" selection-start-column="37" selection-end-line="81" selection-end-column="37" />
+            <state vertical-scroll-proportion="1.1871657">
+              <caret line="74" column="82" selection-start-line="74" selection-start-column="82" selection-end-line="74" selection-end-column="82" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Multiplexer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Multiplexer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/network/Multiplexer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.85561496">
-              <caret line="178" column="17" selection-start-line="178" selection-start-column="17" selection-end-line="178" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="161" column="59" selection-start-line="161" selection-start-column="59" selection-end-line="161" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -642,8 +591,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/handler/TaskManager.java" />
         <option value="$PROJECT_DIR$/src/main/resources/styles/enabled.css" />
         <option value="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/KioskApplication.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/controller/UIController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/network/Multiplexer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/controller/UIController.java" />
       </list>
     </option>
   </component>
@@ -1698,12 +1647,12 @@
       <workItem from="1451428166929" duration="3057000" />
       <workItem from="1451431706397" duration="3862000" />
       <workItem from="1451446799370" duration="5848000" />
-      <workItem from="1451487446726" duration="10608000" />
+      <workItem from="1451487446726" duration="10712000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58710000" />
+    <option name="totallyTimeSpent" value="58814000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1716,7 +1665,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1920" y="23" width="1920" height="1097" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3299285" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -2124,16 +2073,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/smartecarte/mock/dcb/DcbCommandTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44495836">
-          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/cartselection.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
@@ -2204,21 +2143,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/controller/UIController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="81" column="37" selection-start-line="81" selection-start-column="37" selection-end-line="81" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/network/Multiplexer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.85561496">
-          <caret line="178" column="17" selection-start-line="178" selection-start-column="17" selection-end-line="178" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="161" column="59" selection-start-line="161" selection-start-column="59" selection-end-line="161" selection-end-column="59" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/smartecarte/mock/dcb/DcbCommandTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44495836">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/nerdery/smartecarte/controller/UIController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1871657">
+          <caret line="74" column="82" selection-start-line="74" selection-start-column="82" selection-end-line="74" selection-end-column="82" />
+          <folding />
         </state>
       </provider>
     </entry>

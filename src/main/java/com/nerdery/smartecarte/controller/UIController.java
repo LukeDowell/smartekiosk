@@ -72,7 +72,7 @@ public class UIController implements Observer, Initializable{
         for(DcbDevice d : devices) {
 
             Node deviceNode = FXMLLoader.load(getClass().getResource("/fxml/device.fxml"));
-
+            ((Label) deviceNode.lookup("#idLabel")).setText(d.getId().toString());
             if(d.getState().equals(DcbDevice.State.ON)) {
                 deviceNode.getStyleClass().add("device-enabled");
             } else {
