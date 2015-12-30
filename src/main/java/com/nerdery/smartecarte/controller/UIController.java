@@ -6,6 +6,7 @@ import com.nerdery.smartecarte.model.DcbRepositoryImpl;
 import com.nerdery.smartecarte.model.event.DcbChangedEvent;
 import com.nerdery.smartecarte.network.Multiplexer;
 import com.nerdery.smartecarte.network.Transmit;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,7 +49,7 @@ public class UIController implements Observer, Initializable{
 
         outputArea.appendText(event.getEvent() + "- " + event.getColumnNumber() + " : " + event.getDeviceNumber() + "\n");
         try {
-            updateCarts();
+            Platform.runLater(this::updateCarts);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -65,23 +66,27 @@ public class UIController implements Observer, Initializable{
         logger.debug("UIController initialized");
     }
 
-    private void updateCarts() throws IOException {
-        Collection<DcbDevice> devices = DcbRepositoryImpl.getInstance().getAllDevices();
-        Collection<Node> children = new LinkedHashSet<>();
+    private void updateCarts() {
+        try {
+            Collection<DcbDevice> devices = DcbRepositoryImpl.getInstance().getAllDevices();
+            Collection<Node> children = new LinkedHashSet<>();
 
-        for(DcbDevice d : devices) {
+            for(DcbDevice d : devices) {
 
-            Node deviceNode = FXMLLoader.load(getClass().getResource("/fxml/device.fxml"));
-            ((Label) deviceNode.lookup("#idLabel")).setText(d.getId().toString());
-            if(d.getState().equals(DcbDevice.State.ON)) {
-                deviceNode.getStyleClass().add("device-enabled");
-            } else {
-                deviceNode.getStyleClass().add("device-disabled");
+                Node deviceNode = FXMLLoader.load(getClass().getResource("/fxml/device.fxml"));
+                ((Label) deviceNode.lookup("#idLabel")).setText(d.getId().toString());
+                if(d.getState().equals(DcbDevice.State.ON)) {
+                    deviceNode.getStyleClass().add("device-enabled");
+                } else {
+                    deviceNode.getStyleClass().add("device-disabled");
+                }
+
+                children.add(deviceNode);
             }
 
-            children.add(deviceNode);
+            cartFlowPane.getChildren().setAll(children);
+        } catch(Exception e) {
+            e.printStackTrace();
         }
-
-        cartFlowPane.getChildren().setAll(children);
     }
 }
