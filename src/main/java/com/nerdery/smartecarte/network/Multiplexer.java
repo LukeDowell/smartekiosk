@@ -29,6 +29,8 @@ public class Multiplexer extends Observable implements Transmitter {
     /** A queue of all outgoing messages we wish to send */
     private Queue<Transmit> outgoingQueue = new ConcurrentLinkedQueue<>();
 
+    public static final SocketAddress MOCKADDRESS = new InetSocketAddress("localhost", 30000);
+
     /**
      * @param key
      *      The selection key that contains the channel we are gonna write to

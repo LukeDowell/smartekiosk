@@ -17,7 +17,7 @@ public class PollingService {
 
     private InetSocketAddress mockAddress = new InetSocketAddress("localhost", 30000);
 
-    private static final int PERIOD = 2000; // How often we want to poll in millis
+    private static final int PERIOD = 10000; // How often we want to poll in millis
 
     public PollingService() {
         logger.debug("PollingService - started");
@@ -28,25 +28,25 @@ public class PollingService {
 
         long lastHeartbeatTime = 0;
 
-//        while(!Thread.currentThread().isInterrupted()) {
-//
-//
-//            try {
-//
-//                if(System.currentTimeMillis() - lastHeartbeatTime >= 15000) {
-//                    logger.debug("PollingService - heartbeat");
-//                    lastHeartbeatTime = System.currentTimeMillis();
-//                }
-//
-//                // The id of the DCB we want to check
-//                byte[] data = { 1 };
-//                multiplexer.transmit(mockAddress, new DcbCommandPacket(DcbCommand.COMMAND_GET_ALL_DEVICE_STATE, data).getBuffer());
-//                Thread.sleep(PERIOD);
-//
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }
+        while(!Thread.currentThread().isInterrupted()) {
+
+
+            try {
+
+                if(System.currentTimeMillis() - lastHeartbeatTime >= 15000) {
+                    logger.debug("PollingService - heartbeat");
+                    lastHeartbeatTime = System.currentTimeMillis();
+                }
+
+                // The id of the DCB we want to check
+                byte[] data = { 1 };
+                multiplexer.transmit(mockAddress, new DcbCommandPacket(DcbCommand.COMMAND_GET_ALL_DEVICE_STATE, data).getBuffer());
+                Thread.sleep(PERIOD);
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

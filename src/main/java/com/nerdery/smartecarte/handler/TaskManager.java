@@ -20,7 +20,6 @@ public class TaskManager implements Observer {
     public TaskManager() {
         Multiplexer mux = Multiplexer.getInstance();
         mux.addObserver(this);
-        System.out.println(mux);
         logger.debug("TaskManager started.");
     }
 

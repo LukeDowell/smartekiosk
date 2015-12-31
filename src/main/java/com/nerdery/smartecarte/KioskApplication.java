@@ -49,7 +49,6 @@ public class KioskApplication extends Application {
 
         // Spin up mux
         Multiplexer multiplexer = Multiplexer.getInstance();
-        System.out.println(" Kiosk - " + multiplexer);
         executorService.execute(() -> {
             try {
                 Thread.sleep(1000);

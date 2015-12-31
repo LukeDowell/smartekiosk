@@ -1,5 +1,6 @@
 package com.nerdery.smartecarte.controller;
 
+import com.nerdery.smartecarte.dcb.DcbCommand;
 import com.nerdery.smartecarte.dcb.DcbCommandPacket;
 import com.nerdery.smartecarte.dcb.DcbDevice;
 import com.nerdery.smartecarte.model.DcbRepositoryImpl;
@@ -43,6 +44,8 @@ public class UIController implements Observer, Initializable{
     @FXML
     FlowPane cartFlowPane;
 
+    private Node selectedNode = null;
+
     @Override
     public void update(Observable o, Object arg) {
         logger.debug("UIController -  event received");
@@ -58,7 +61,18 @@ public class UIController implements Observer, Initializable{
 
     @FXML
     public void checkoutBtnPressed(ActionEvent event) {
-        logger.debug("checkoutBtnPressed");
+        if(selectedNode != null) {
+            String sId = ((Label) selectedNode.lookup("#idLabel")).getText();
+            int columnNumber = 1;
+            int deviceId = Integer.parseInt(sId);
+            int state = DcbRepositoryImpl.getInstance().getDevice(columnNumber, deviceId).getState() == DcbDevice.State.OFF ? 1 : 0;
+            byte[] data = {
+                    0x01,
+                    (byte) deviceId,
+                    (byte) state
+            };
+            Multiplexer.getInstance().transmit(Multiplexer.MOCKADDRESS, new DcbCommandPacket(DcbCommand.COMMAND_SET_DEVICE_STATE, data).getBuffer());
+        }
     }
 
     @Override
@@ -71,6 +85,8 @@ public class UIController implements Observer, Initializable{
         Node sourceNode = (Node) event.getSource();
         sourceNode.getStyleClass().add("device-selected");
         String id = ((Label) sourceNode.lookup("#idLabel")).getText();
+
+        selectedNode = sourceNode;
         logger.debug("UIController - Node clicked with id: " + id);
     }
 

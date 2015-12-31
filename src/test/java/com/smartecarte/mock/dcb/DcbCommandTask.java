@@ -47,7 +47,27 @@ public class DcbCommandTask implements Callable<Void> {
     };
 
     static private final DcbCommandHandler COMMAND_SET_DEVICE_STATE = (MockDcb dcb, DcbCommandPacket packet) -> {
-        return null;
+        byte[] buffer = packet.getBuffer();
+        // 0 and 1 are length and command byte respectively
+        int columnNumber = buffer[2];
+        int deviceNumber = buffer[3];
+        int state = buffer[4];
+
+        if(state == 1) {
+            dcb.getDevice(deviceNumber).setState(DcbDevice.State.ON);
+        } else {
+            dcb.getDevice(deviceNumber).setState(DcbDevice.State.OFF);
+        }
+
+        logger.debug("COMMAND_SET_DEVICE_STATE - setting device: {} {} to state: {}", columnNumber, deviceNumber, state);
+
+        byte[] data = {
+                (byte) columnNumber,
+                (byte) deviceNumber,
+                (byte) state
+        };
+        DcbResponsePacket response = new DcbResponsePacket(DcbCommand.COMMAND_SET_DEVICE_STATE, data);
+        return response;
     };
 
     static private final DcbCommandHandler COMMAND_GET_IP_MAC_ADDRESS = (MockDcb dcb, DcbCommandPacket packet) -> {
@@ -129,6 +149,7 @@ public class DcbCommandTask implements Callable<Void> {
     static private final Map<DcbCommand, DcbCommandHandler> map = new HashMap<DcbCommand, DcbCommandHandler>();
 
     static {
+        map.put(DcbCommand.COMMAND_SET_DEVICE_STATE, COMMAND_SET_DEVICE_STATE);
         map.put(DcbCommand.COMMAND_GET_ALL_DEVICE_STATE, COMMAND_GET_ALL_DEVICE_STATE);
         map.put(DcbCommand.COMMAND_GET_IP_MAC_ADDRESS, COMMAND_GET_IP_MAC_ADDRESS);
         map.put(DcbCommand.COMMAND_GET_DCB_PARAMETERS, COMMAND_GET_DCB_PARAMETERS);
