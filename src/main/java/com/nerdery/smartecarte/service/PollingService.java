@@ -17,7 +17,7 @@ public class PollingService {
 
     private InetSocketAddress mockAddress = new InetSocketAddress("localhost", 30000);
 
-    private static final int PERIOD = 10000; // How often we want to poll in millis
+    private static final int PERIOD = 2000; // How often we want to poll in millis
 
     public PollingService() {
         logger.debug("PollingService - started");

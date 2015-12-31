@@ -1,4 +1,4 @@
-package com.nerdery.smartecarte.controller;
+package com.nerdery.smartecarte.ui.controller;
 
 import com.nerdery.smartecarte.KioskApplication;
 import javafx.event.ActionEvent;

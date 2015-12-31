@@ -14,7 +14,7 @@ public class DcbChangedEvent {
     /**
      * A representation of a change occuring on the DCB.
      * @param event
-     *      The event that occured
+     *      The event that occurred
      * @param columnNumber
      *      The column number of the device or dcb that
      *      the event refers to
